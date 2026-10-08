@@ -1,9 +1,59 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="470" height="80" viewBox="0 0 470 80">
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="140" viewBox="0 0 600 140">
   <defs>
-    <linearGradient id="g" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%" stop-color="#7c3aed"/>
-      <stop offset="100%" stop-color="#06b6d4"/>
+    <linearGradient id="grad" x1="0" y1="0" x2="440" y2="0" gradientUnits="userSpaceOnUse" spreadMethod="reflect">
+      <stop offset="0%" stop-color="#8b5cf6"/>
+      <stop offset="35%" stop-color="#ec4899"/>
+      <stop offset="70%" stop-color="#06b6d4"/>
+      <stop offset="100%" stop-color="#8b5cf6"/>
+      <animateTransform attributeName="gradientTransform" type="translate" from="0 0" to="880 0" dur="6s" repeatCount="indefinite"/>
     </linearGradient>
+
+    <clipPath id="reveal">
+      <rect x="80" y="0" height="140" width="0">
+        <animate attributeName="width" dur="8s" repeatCount="indefinite"
+                 values="0;440;440;0;0" keyTimes="0;0.4;0.82;0.92;1"
+                 calcMode="spline" keySplines="0.4 0 0.2 1;0 0 1 1;0.6 0 0.4 1;0 0 1 1"/>
+      </rect>
+    </clipPath>
+
+    <filter id="glow" x="-20%" y="-50%" width="140%" height="200%">
+      <feGaussianBlur stdDeviation="8"/>
+    </filter>
   </defs>
-  <text x="235" y="52" text-anchor="middle" font-family="'Segoe UI', Helvetica, Arial, sans-serif" font-size="40" font-weight="700" fill="url(#g)">hey, i'm vaibhav</text>
+
+  <!-- floating sparkles -->
+  <g fill="#ec4899">
+    <circle cx="50" cy="40" r="3"><animate attributeName="cy" values="40;28;40" dur="3s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.3;1;0.3" dur="3s" repeatCount="indefinite"/></circle>
+  </g>
+  <g fill="#06b6d4">
+    <circle cx="555" cy="95" r="3"><animate attributeName="cy" values="95;105;95" dur="3.5s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.3;1;0.3" dur="3.5s" repeatCount="indefinite"/></circle>
+  </g>
+  <g fill="#8b5cf6">
+    <circle cx="540" cy="30" r="2"><animate attributeName="cy" values="30;20;30" dur="2.6s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.2;1;0.2" dur="2.6s" repeatCount="indefinite"/></circle>
+    <circle cx="35" cy="100" r="2"><animate attributeName="cy" values="100;110;100" dur="2.9s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.2;1;0.2" dur="2.9s" repeatCount="indefinite"/></circle>
+  </g>
+
+  <g clip-path="url(#reveal)">
+    <!-- glow layer -->
+    <text x="80" y="82" textLength="440" lengthAdjust="spacingAndGlyphs"
+          font-family="'Courier New', Consolas, Menlo, monospace" font-size="48" font-weight="700"
+          fill="url(#grad)" filter="url(#glow)" opacity="0.55">hey, i'm vaibhav</text>
+    <!-- main text -->
+    <text x="80" y="82" textLength="440" lengthAdjust="spacingAndGlyphs"
+          font-family="'Courier New', Consolas, Menlo, monospace" font-size="48" font-weight="700"
+          fill="url(#grad)">hey, i'm vaibhav</text>
+  </g>
+
+  <!-- typing cursor -->
+  <rect x="80" y="40" width="4" height="52" rx="2" fill="url(#grad)">
+    <animate attributeName="x" dur="8s" repeatCount="indefinite"
+             values="80;520;520;80;80" keyTimes="0;0.4;0.82;0.92;1"
+             calcMode="spline" keySplines="0.4 0 0.2 1;0 0 1 1;0.6 0 0.4 1;0 0 1 1"/>
+    <animate attributeName="opacity" values="1;1;0;0;1" keyTimes="0;0.45;0.5;0.95;1" dur="0.9s" repeatCount="indefinite"/>
+  </rect>
+
+  <!-- pulsing underline -->
+  <rect x="80" y="108" height="4" rx="2" fill="url(#grad)">
+    <animate attributeName="width" values="60;440;60" dur="4s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1"/>
+  </rect>
 </svg>
